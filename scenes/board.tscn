@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyth4d5dhdxo3"]
+
+[ext_resource type="PackedScene" uid="uid://5u421btpcipk" path="res://scenes/pad.tscn" id="1_chw0j"]
+[ext_resource type="PackedScene" uid="uid://bwgd17gqg5ttg" path="res://scenes/border.tscn" id="2_ymy14"]
+[ext_resource type="PackedScene" uid="uid://cobe7wyj4csj8" path="res://scenes/enemypad.tscn" id="3_qihcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg410"]
+size = Vector2(108, 23)
+
+[node name="board" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1172.0
+offset_bottom = 676.0
+color = Color(0, 0, 0, 1)
+
+[node name="pad" parent="." instance=ExtResource("1_chw0j")]
+position = Vector2(41, 88)
+scale = Vector2(3, 3)
+
+[node name="border" parent="." instance=ExtResource("2_ymy14")]
+position = Vector2(174, 622)
+
+[node name="topWall" parent="." instance=ExtResource("2_ymy14")]
+position = Vector2(174, 40)
+
+[node name="CollisionWallsPaddles2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CollisionWallsPaddles2"]
+position = Vector2(49, 39)
+shape = SubResource("RectangleShape2D_mg410")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionWallsPaddles2"]
+position = Vector2(1100, 613.5)
+shape = SubResource("RectangleShape2D_mg410")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionWallsPaddles2"]
+position = Vector2(49, 613.5)
+shape = SubResource("RectangleShape2D_mg410")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="CollisionWallsPaddles2"]
+position = Vector2(1100, 39)
+shape = SubResource("RectangleShape2D_mg410")
+
+[node name="pad2" parent="." instance=ExtResource("3_qihcw")]
+position = Vector2(1091, 77)
+scale = Vector2(3, 3)
+
+[node name="separatorLine" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 87.0
+offset_right = 576.0
+offset_bottom = 117.0
+
+[node name="ColorRect2" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 137.0
+offset_right = 576.0
+offset_bottom = 167.0
+
+[node name="ColorRect3" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 187.0
+offset_right = 576.0
+offset_bottom = 217.0
+
+[node name="ColorRect4" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 237.0
+offset_right = 576.0
+offset_bottom = 267.0
+
+[node name="ColorRect5" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 287.0
+offset_right = 576.0
+offset_bottom = 317.0
+
+[node name="ColorRect6" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 337.0
+offset_right = 576.0
+offset_bottom = 367.0
+
+[node name="ColorRect7" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 387.0
+offset_right = 576.0
+offset_bottom = 417.0
+
+[node name="ColorRect8" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 437.0
+offset_right = 576.0
+offset_bottom = 467.0
+
+[node name="ColorRect9" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 487.0
+offset_right = 576.0
+offset_bottom = 517.0
+
+[node name="ColorRect10" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 537.0
+offset_right = 576.0
+offset_bottom = 567.0
+
+[node name="ColorRect11" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 587.0
+offset_right = 576.0
+offset_bottom = 617.0
+
+[node name="ColorRect12" type="ColorRect" parent="separatorLine"]
+offset_left = 572.0
+offset_top = 37.0
+offset_right = 576.0
+offset_bottom = 67.0
