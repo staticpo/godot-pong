@@ -1,0 +1,9 @@
+0b7126e0c6e86d3ec295a72f5aa6e0bd
+::res://::1673750525
+icon.svg::CompressedTexture2D::8438037440965868227::1669327807::1669327811::1::::<><>::
+::res://scenes/::1673184691
+board.tscn::PackedScene::6497073803058710844::1673184691::0::1::::<><>::uid://5u421btpcipk<>uid://bwgd17gqg5ttg<>uid://cobe7wyj4csj8
+border.tscn::PackedScene::3943191782626216488::1673184691::0::1::::<><>::
+enemypad.tscn::PackedScene::5757850762485519259::1673184691::0::1::::<><>::
+pad.gd::GDScript::-1::1673184689::0::1::::<>CharacterBody2D<>::
+pad.tscn::PackedScene::2148763241483141320::1673184691::0::1::::<><>::res://scenes/pad.gd

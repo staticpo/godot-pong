@@ -1,50 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyth4d5dhdxo3"]
+[gd_scene load_steps=9 format=3 uid="uid://cyth4d5dhdxo3"]
 
+[ext_resource type="Script" path="res://scenes/board.gd" id="1_4io0m"]
 [ext_resource type="PackedScene" uid="uid://5u421btpcipk" path="res://scenes/pad.tscn" id="1_chw0j"]
 [ext_resource type="PackedScene" uid="uid://bwgd17gqg5ttg" path="res://scenes/border.tscn" id="2_ymy14"]
 [ext_resource type="PackedScene" uid="uid://cobe7wyj4csj8" path="res://scenes/enemypad.tscn" id="3_qihcw"]
+[ext_resource type="PackedScene" uid="uid://cfxa3bnvxdu8f" path="res://scenes/ball.tscn" id="4_4wuv4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg410"]
-size = Vector2(108, 23)
+size = Vector2(100, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wihtu"]
+size = Vector2(77.25, 797.25)
+
+[sub_resource type="SystemFont" id="SystemFont_lfboh"]
+font_names = PackedStringArray("Monospace", "Sans-Serif")
 
 [node name="board" type="Node2D"]
+script = ExtResource("1_4io0m")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1172.0
 offset_bottom = 676.0
 color = Color(0, 0, 0, 1)
 
-[node name="pad" parent="." instance=ExtResource("1_chw0j")]
-position = Vector2(41, 88)
-scale = Vector2(3, 3)
-
-[node name="border" parent="." instance=ExtResource("2_ymy14")]
+[node name="bottomWall" parent="." instance=ExtResource("2_ymy14")]
 position = Vector2(174, 622)
 
 [node name="topWall" parent="." instance=ExtResource("2_ymy14")]
 position = Vector2(174, 40)
 
-[node name="CollisionWallsPaddles2" type="StaticBody2D" parent="."]
+[node name="CollisionWallsPaddles" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="CollisionWallsPaddles2"]
-position = Vector2(49, 39)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CollisionWallsPaddles"]
+position = Vector2(52, 39)
 shape = SubResource("RectangleShape2D_mg410")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionWallsPaddles2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionWallsPaddles"]
 position = Vector2(1100, 613.5)
 shape = SubResource("RectangleShape2D_mg410")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionWallsPaddles2"]
-position = Vector2(49, 613.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionWallsPaddles"]
+position = Vector2(50, 613.5)
 shape = SubResource("RectangleShape2D_mg410")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="CollisionWallsPaddles2"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="CollisionWallsPaddles"]
 position = Vector2(1100, 39)
 shape = SubResource("RectangleShape2D_mg410")
-
-[node name="pad2" parent="." instance=ExtResource("3_qihcw")]
-position = Vector2(1091, 77)
-scale = Vector2(3, 3)
 
 [node name="separatorLine" type="Node2D" parent="."]
 metadata/_edit_group_ = true
@@ -120,3 +121,52 @@ offset_left = 572.0
 offset_top = 37.0
 offset_right = 576.0
 offset_bottom = 67.0
+
+[node name="enemypad" parent="." instance=ExtResource("3_qihcw")]
+position = Vector2(1091, 77)
+scale = Vector2(3, 3)
+
+[node name="ball" parent="." instance=ExtResource("4_4wuv4")]
+position = Vector2(565, 350)
+
+[node name="pad" parent="." instance=ExtResource("1_chw0j")]
+position = Vector2(41, 88)
+scale = Vector2(3, 3)
+
+[node name="OutsideAreaLeft" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideAreaLeft"]
+position = Vector2(-44.375, 347.375)
+shape = SubResource("RectangleShape2D_wihtu")
+
+[node name="OutsideAreaRight" type="Area2D" parent="."]
+position = Vector2(1247, 3)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideAreaRight"]
+position = Vector2(-44.375, 344.75)
+shape = SubResource("RectangleShape2D_wihtu")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="PlayerScoreLabel" type="Label" parent="GUI"]
+offset_left = 471.0
+offset_top = 85.0
+offset_right = 511.0
+offset_bottom = 139.0
+theme_override_fonts/font = SubResource("SystemFont_lfboh")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="EnemyScoreLabel" type="Label" parent="GUI"]
+offset_left = 650.0
+offset_top = 85.0
+offset_right = 690.0
+offset_bottom = 139.0
+theme_override_fonts/font = SubResource("SystemFont_lfboh")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[connection signal="body_entered" from="OutsideAreaLeft" to="." method="_on_outside_area_left_body_entered"]
+[connection signal="body_entered" from="OutsideAreaRight" to="." method="_on_outside_area_right_body_entered"]

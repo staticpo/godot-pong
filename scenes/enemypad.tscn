@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cobe7wyj4csj8"]
+[gd_scene load_steps=3 format=3 uid="uid://cobe7wyj4csj8"]
+
+[ext_resource type="Script" path="res://scenes/enemypad.gd" id="1_ugsfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84tqo"]
 size = Vector2(5, 30)
 
 [node name="pad" type="CharacterBody2D"]
 motion_mode = 1
+script = ExtResource("1_ugsfh")
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
