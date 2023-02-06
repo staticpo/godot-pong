@@ -1,8 +1,0 @@
-res://scenes/pad.tscn
-res://scenes/board.tscn
-res://scenes/border.tscn
-res://scenes/enemypad.tscn
-res://scenes/ball.tscn
-res://scenes/ball.gd
-res://scenes/enemypad.gd
-res://scenes/board.gd
